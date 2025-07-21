@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-07-20">
 
 <title>Segmentation Analysis</title>
 <style>
@@ -4524,7 +4525,11 @@ window.Quarto = {
   <li><a href="#company" id="toc-company" class="nav-link" data-scroll-target="#company"><span class="header-section-number">1.1</span> Company</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.2</span> Data</a></li>
   </ul></li>
-  <li><a href="#distance-as-a-measure-of-similarity" id="toc-distance-as-a-measure-of-similarity" class="nav-link" data-scroll-target="#distance-as-a-measure-of-similarity"><span class="header-section-number">2</span> Distance as a measure of similarity</a></li>
+  <li><a href="#distance-as-a-measure-of-similarity" id="toc-distance-as-a-measure-of-similarity" class="nav-link" data-scroll-target="#distance-as-a-measure-of-similarity"><span class="header-section-number">2</span> Distance as a measure of similarity</a>
+  <ul>
+  <li><a href="#manual-calculation" id="toc-manual-calculation" class="nav-link" data-scroll-target="#manual-calculation"><span class="header-section-number">2.1</span> Manual Calculation</a></li>
+  <li><a href="#using-distance-function" id="toc-using-distance-function" class="nav-link" data-scroll-target="#using-distance-function"><span class="header-section-number">2.2</span> Using <code>distance</code> function</a></li>
+  </ul></li>
   <li><a href="#k-mean-as-a-solution-to-form-homogenous-subgroups" id="toc-k-mean-as-a-solution-to-form-homogenous-subgroups" class="nav-link" data-scroll-target="#k-mean-as-a-solution-to-form-homogenous-subgroups"><span class="header-section-number">3</span> <code>k-mean</code> as a solution to form homogenous subgroups</a>
   <ul>
   <li><a href="#scaling-up-distances" id="toc-scaling-up-distances" class="nav-link" data-scroll-target="#scaling-up-distances"><span class="header-section-number">3.1</span> Scaling up distances</a></li>
@@ -4592,6 +4597,12 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 20, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -4609,7 +4620,11 @@ window.Quarto = {
   <li><a href="#company" id="toc-company"><span class="header-section-number">1.1</span> Company</a></li>
   <li><a href="#data" id="toc-data"><span class="header-section-number">1.2</span> Data</a></li>
   </ul></li>
-  <li><a href="#distance-as-a-measure-of-similarity" id="toc-distance-as-a-measure-of-similarity"><span class="header-section-number">2</span> Distance as a measure of similarity</a></li>
+  <li><a href="#distance-as-a-measure-of-similarity" id="toc-distance-as-a-measure-of-similarity"><span class="header-section-number">2</span> Distance as a measure of similarity</a>
+  <ul>
+  <li><a href="#manual-calculation" id="toc-manual-calculation"><span class="header-section-number">2.1</span> Manual Calculation</a></li>
+  <li><a href="#using-distance-function" id="toc-using-distance-function"><span class="header-section-number">2.2</span> Using <code>distance</code> function</a></li>
+  </ul></li>
   <li><a href="#k-mean-as-a-solution-to-form-homogenous-subgroups" id="toc-k-mean-as-a-solution-to-form-homogenous-subgroups"><span class="header-section-number">3</span> <code>k-mean</code> as a solution to form homogenous subgroups</a>
   <ul>
   <li><a href="#scaling-up-distances" id="toc-scaling-up-distances"><span class="header-section-number">3.1</span> Scaling up distances</a></li>
@@ -4686,20 +4701,20 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="kgaicqrqpw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kgaicqrqpw table {
+<div id="vjhyotidof" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vjhyotidof table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#kgaicqrqpw thead, #kgaicqrqpw tbody, #kgaicqrqpw tfoot, #kgaicqrqpw tr, #kgaicqrqpw td, #kgaicqrqpw th {
+#vjhyotidof thead, #vjhyotidof tbody, #vjhyotidof tfoot, #vjhyotidof tr, #vjhyotidof td, #vjhyotidof th {
 border-style: none;
 }
-#kgaicqrqpw p {
+#vjhyotidof p {
 margin: 0;
 padding: 0;
 }
-#kgaicqrqpw .gt_table {
+#vjhyotidof .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -4724,11 +4739,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_caption {
+#vjhyotidof .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#kgaicqrqpw .gt_title {
+#vjhyotidof .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -4739,7 +4754,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#kgaicqrqpw .gt_subtitle {
+#vjhyotidof .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -4750,7 +4765,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#kgaicqrqpw .gt_heading {
+#vjhyotidof .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -4761,12 +4776,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_bottom_border {
+#vjhyotidof .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_col_headings {
+#vjhyotidof .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4780,7 +4795,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_col_heading {
+#vjhyotidof .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4799,7 +4814,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#kgaicqrqpw .gt_column_spanner_outer {
+#vjhyotidof .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4810,13 +4825,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#kgaicqrqpw .gt_column_spanner_outer:first-child {
+#vjhyotidof .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#kgaicqrqpw .gt_column_spanner_outer:last-child {
+#vjhyotidof .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#kgaicqrqpw .gt_column_spanner {
+#vjhyotidof .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -4827,10 +4842,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#kgaicqrqpw .gt_spanner_row {
+#vjhyotidof .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#kgaicqrqpw .gt_group_heading {
+#vjhyotidof .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4855,7 +4870,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#kgaicqrqpw .gt_empty_group_heading {
+#vjhyotidof .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -4869,13 +4884,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#kgaicqrqpw .gt_from_md > :first-child {
+#vjhyotidof .gt_from_md > :first-child {
 margin-top: 0;
 }
-#kgaicqrqpw .gt_from_md > :last-child {
+#vjhyotidof .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#kgaicqrqpw .gt_row {
+#vjhyotidof .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4893,7 +4908,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#kgaicqrqpw .gt_stub {
+#vjhyotidof .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4905,7 +4920,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kgaicqrqpw .gt_stub_row_group {
+#vjhyotidof .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -4918,13 +4933,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#kgaicqrqpw .gt_row_group_first td {
+#vjhyotidof .gt_row_group_first td {
 border-top-width: 2px;
 }
-#kgaicqrqpw .gt_row_group_first th {
+#vjhyotidof .gt_row_group_first th {
 border-top-width: 2px;
 }
-#kgaicqrqpw .gt_summary_row {
+#vjhyotidof .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4933,14 +4948,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kgaicqrqpw .gt_first_summary_row {
+#vjhyotidof .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_first_summary_row.thick {
+#vjhyotidof .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#kgaicqrqpw .gt_last_summary_row {
+#vjhyotidof .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4949,7 +4964,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_grand_summary_row {
+#vjhyotidof .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -4958,7 +4973,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kgaicqrqpw .gt_first_grand_summary_row {
+#vjhyotidof .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4967,7 +4982,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_last_grand_summary_row_top {
+#vjhyotidof .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -4976,10 +4991,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_striped {
+#vjhyotidof .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#kgaicqrqpw .gt_table_body {
+#vjhyotidof .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -4987,7 +5002,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_footnotes {
+#vjhyotidof .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5000,7 +5015,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_footnote {
+#vjhyotidof .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -5008,7 +5023,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kgaicqrqpw .gt_sourcenotes {
+#vjhyotidof .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5021,64 +5036,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#kgaicqrqpw .gt_sourcenote {
+#vjhyotidof .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#kgaicqrqpw .gt_left {
+#vjhyotidof .gt_left {
 text-align: left;
 }
-#kgaicqrqpw .gt_center {
+#vjhyotidof .gt_center {
 text-align: center;
 }
-#kgaicqrqpw .gt_right {
+#vjhyotidof .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#kgaicqrqpw .gt_font_normal {
+#vjhyotidof .gt_font_normal {
 font-weight: normal;
 }
-#kgaicqrqpw .gt_font_bold {
+#vjhyotidof .gt_font_bold {
 font-weight: bold;
 }
-#kgaicqrqpw .gt_font_italic {
+#vjhyotidof .gt_font_italic {
 font-style: italic;
 }
-#kgaicqrqpw .gt_super {
+#vjhyotidof .gt_super {
 font-size: 65%;
 }
-#kgaicqrqpw .gt_footnote_marks {
+#vjhyotidof .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#kgaicqrqpw .gt_asterisk {
+#vjhyotidof .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#kgaicqrqpw .gt_indent_1 {
+#vjhyotidof .gt_indent_1 {
 text-indent: 5px;
 }
-#kgaicqrqpw .gt_indent_2 {
+#vjhyotidof .gt_indent_2 {
 text-indent: 10px;
 }
-#kgaicqrqpw .gt_indent_3 {
+#vjhyotidof .gt_indent_3 {
 text-indent: 15px;
 }
-#kgaicqrqpw .gt_indent_4 {
+#vjhyotidof .gt_indent_4 {
 text-indent: 20px;
 }
-#kgaicqrqpw .gt_indent_5 {
+#vjhyotidof .gt_indent_5 {
 text-indent: 25px;
 }
-#kgaicqrqpw .katex-display {
+#vjhyotidof .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#kgaicqrqpw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vjhyotidof div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -5812,6 +5827,8 @@ height: 0px !important;
 <h1 data-number="2"><span class="header-section-number">2</span> Distance as a measure of similarity</h1>
 <p>To identify segments of similar customers, let us first focus on the question about how to measure similarity. Table 2 shows us some observations for customers from another banking database. The columns show the values of some customer related attributes. We can use the individual attribute characteristics to now calculate a so called distance measure, which shows how similar or dissimilar customers are. The higher the distance, the more dissimilar they are. For continuous variables, we can use the basic <code>Euclidean Distance</code> measure to derive similarities. The Euclidean Distance between two customers A and B can be expressed by the following equation.</p>
 <p><span class="math display">\[ED_{A,B}= \sqrt{(f_{1,A}-f_{1,B})^{2}+(f_{2,A}-f_{2,B})^{2}+...+(f_{n,A}-f_{n,B})^{2}} \]</span></p>
+<section id="manual-calculation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="manual-calculation"><span class="header-section-number">2.1</span> Manual Calculation</h2>
 <div class="cell">
 <details open class="code-fold">
 <summary>Code</summary>
@@ -5849,6 +5866,9 @@ Question 1
 <p>Repeat the calculations for Hawkeye and Burns as well as Hawkeye and Hotlips. What can you tell about the distances between the persons?</p>
 </div>
 </div>
+</section>
+<section id="using-distance-function" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="using-distance-function"><span class="header-section-number">2.2</span> Using <code>distance</code> function</h2>
 <p>While this is a great exercise, it will be impossible to calculate the distances amongst all members of a large customer data base with e.g. 200,000 entries. However in this case we can also use R’s function for Euclidean Distances. We simply need to give the function a data frame with all observations we would like to compare, and R will return a table with the corresponding distances.</p>
 <div class="cell">
 <details open class="code-fold">
@@ -5866,6 +5886,7 @@ v5 34669.872 59135.45 29529.653  7211.104     0.000</code></pre>
 </div>
 </div>
 </section>
+</section>
 <section id="k-mean-as-a-solution-to-form-homogenous-subgroups" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <code>k-mean</code> as a solution to form homogenous subgroups</h1>
 <section id="scaling-up-distances" class="level2" data-number="3.1">
@@ -5878,7 +5899,7 @@ v5 34669.872 59135.45 29529.653  7211.104     0.000</code></pre>
 <section id="josh-starmers-video" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="josh-starmers-video"><span class="header-section-number">3.2.1</span> Josh Starmer’s Video</h3>
 <p>Watch this video about how K-means clustering works.</p>
-{{&lt; https://www.youtube.com/watch?v=4b5d3muPQmA &gt;}}
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/4b5d3muPQmA" title frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <hr>
 </section>
 <section id="k-means-clustering-process" class="level3" data-number="3.2.2">
@@ -5949,6 +5970,10 @@ v5 34669.872 59135.45 29529.653  7211.104     0.000</code></pre>
 <section id="step-2-k-means-solution" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Step 2: K-means Solution</h1>
 <p>We can now start with the cluster analysis. Let us first try out different solutions with different numbers of clusters. To ensure that we start with the same centroids, we use the <code>set.seed</code> function. This ensures that every time we run this code, we obtain the same results. If you do not use <code>set.seed</code> ahead of the cluster analysis, you will receive different solutions, which will be close to each other but not identical. We can run a k-means cluster analysis with R’s <code>kmeans</code> function. We tell the <code>kmeans</code> function which data frame contains our customer data and specify the number of clusters we want to be included. Here we set k to 4.</p>
+<ul>
+<li><p>The algorithm of Hartigan and Wong (1979) is used by default.</p></li>
+<li><p>Note that some authors use k-means to refer to a specific algorithm rather than the general method: most commonly the algorithm given by MacQueen (1967) but sometimes that given by Lloyd (1957) and Forgy (1965). The <strong>Hartigan–Wong algorithm</strong> generally does <em>a better job</em> than either of those, but trying several random starts (<strong><code>nstart</code>&gt;1</strong>) is often recommended. In rare cases, when some of the points (rows of <code>x</code>) are extremely close, the algorithm may not converge in the “Quick-Transfer” stage, signalling a warning (and returning <code>ifault = 4</code>). Slight rounding of the data may be advisable in that case.</p></li>
+</ul>
 <div class="cell">
 <details open class="code-fold">
 <summary>Code</summary>
